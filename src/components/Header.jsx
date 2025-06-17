@@ -5,7 +5,7 @@ function Header() {
   return (
     <div className="mx-8 sm:mx-16 xl:mx-24 relative">
       <div className="text-center mt-20 mb-8">
-        <div className="inline-flex items-center justify-center gap-4 px-6 py-1.5 mb-4 border border-purple-600/40 bg-purple-600/10 rounded-full text-sm text-primary">
+        <div className="inline-flex items-center justify-center gap-4 px-6 py-1.5 mb-4 border border-purple-600 bg-purple-600/10 rounded-full text-sm text-primary">
           <p>New: AI feature integrated</p>
           <img src={assets.star_icon} alt="" className="w-2.5" />
         </div>
@@ -20,7 +20,7 @@ function Header() {
           starts right here.
         </p>
        
-       <form className="flex items-center justify-center gap-2 max-w-lg mx-auto border border-purple-600/40 bg-purple-600/10  rounded overflow-hidden max-sm:scale-75">
+       <form className="flex items-center justify-center gap-2 max-w-lg mx-auto border border-purple-600 bg-purple-600/10  rounded overflow-hidden max-sm:scale-75">
         <input type="text" placeholder="search for blogs" required className="w-full pl-4 outline-none"/>
         <button type="sumbit" className="bg-primary text-white px-8 py-2 m-1.5 rounded hover:scale:scale-105 transition-all cursor-pointer">search</button>
        </form>

@@ -15,7 +15,7 @@ function Navbar() {
       />
       <button
         onClick={() => navigate("/admin")}
-        className="flex items-center gap-2 rounded-full text-sm cursor-pointer bg-primary text-white px-10 py-2.5"
+        className="flex items-center gap-2 rounded-full text-sm cursor-pointer bg-primary border border-purple-900 text-white px-10 py-2.5"
       >
         Login
         <img src={assets.arrow} className="w-3" alt="arrow" />
