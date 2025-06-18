@@ -20,6 +20,10 @@ function Blog() {
   }
 
 
+  const addComment = async(e)=>{
+    e.preventDefult();
+  }
+
 
   useEffect(() => {
     fetchBlogData();
@@ -54,7 +58,30 @@ function Blog() {
         {/* {comments section} */}
         <div className="mt-14 mb-10 max-w-3xl mx-auto">
           <p className="font-semibold mb-4">Comment ({comments.length})</p>
+          <div className="flex flex-col gap-4">
+            {comments.map((item,index)=>(
+              <div key={index} className="relative bg-purple-600/10 border border-purple-600 max-w-xl p-4 rounded text-gray-800">
+                <div className="flex items-center gap-2 mb-2">
+                  <img src={assets.user_icon} alt=""  className="w-6"/>
+                  <p className="font-medium">{item.name}</p>
+                </div>
+                <p className="text-sm max-w-md ml-8">{item.content}</p>
+                <div className="absolute right-4 bottom-3 flex items-center gap-2 text-xs">{Moment(item.createdAt).fromNow}</div>
+              </div>
+            ))}
 
+          </div>
+
+        </div>
+        {/* {add comments} */}
+        <div className="max-w-3xl mx-auto">
+          <p className="font-semibold mb-4">Add your comments</p>
+          <from onSubmit={addComment} className="flex flex-col items-start gap-4 max-w-lg" >
+            <input type="text" placeholder="name"  className="w-full p-2 bg-purple-600/10 border border-purple-600 rounded outline-none"></input>
+            <textarea placeholder="comment" className="w-full p-2 bg-purple-600/10 border border-purple-600 rounded outline-none h-48" required></textarea>
+            <button type="submit" className="bg-primary text-white rounded p-2 px-8 hover:scale-102 transition-all cursor-pointer">Submit</button>
+
+          </from>
         </div>
       </div>
     </div>
