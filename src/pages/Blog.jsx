@@ -3,12 +3,18 @@ import { useParams } from "react-router-dom";
 import { assets, blog_data, comments_data } from "../assets/assets";
 import Navbar from "../components/Navbar";
 import Moment from "moment";
+import Footer from "../components/Footer";
+import Loader from "../components/Loader";
 
 function Blog() {
   const { id } = useParams();
 
   const [data, setData] = useState(null);
-  const [comments, setComments] = useState(null);
+  const [comments, setComments] = useState([]);
+
+  const [name, setName] = useState('');
+    const [content, setContent] = useState('');
+
   const fetchBlogData = async () => {
     const data = blog_data.find((item) => item._id === id);
     setData(data);
@@ -77,16 +83,29 @@ function Blog() {
         <div className="max-w-3xl mx-auto">
           <p className="font-semibold mb-4">Add your comments</p>
           <from onSubmit={addComment} className="flex flex-col items-start gap-4 max-w-lg" >
-            <input type="text" placeholder="name"  className="w-full p-2 bg-purple-600/10 border border-purple-600 rounded outline-none"></input>
-            <textarea placeholder="comment" className="w-full p-2 bg-purple-600/10 border border-purple-600 rounded outline-none h-48" required></textarea>
+            <input onChange={(e)=>setName(e.target.value)} value={name} type="text" placeholder="name"  className="w-full p-2 bg-purple-600/10 border border-purple-600 rounded outline-none"></input>
+            <textarea onChange={(e)=>setContent(e.target.value)} value={content} placeholder="comment" className="w-full p-2 bg-purple-600/10 border border-purple-600 rounded outline-none h-48" required></textarea>
             <button type="submit" className="bg-primary text-white rounded p-2 px-8 hover:scale-102 transition-all cursor-pointer">Submit</button>
 
           </from>
         </div>
+        <div>
+          {/* share button */}
+          <p className="font-semibold my-4">Share this article on social media</p>
+          <div className="flex">
+            <img src={assets.facebook_icon} alt="" />
+             <img src={assets.twitter_icon} alt="" />
+             <img src={assets.googleplus_icon} alt="" />
+          </div>
+        </div>
+
+        
+
       </div>
+      <Footer/>
     </div>
   ) : (
-    <div>Loding....</div>
+    <Loader/>
   );
 }
 
